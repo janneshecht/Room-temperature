@@ -2,8 +2,7 @@
 Smashing Widget to display the current room-temperature and humidity
 
 ## Preview
-
-ToDo: adding screenshot of widget
+[![Room-temperature-Widget.png](https://i.postimg.cc/QdLkKtCk/Room-temperature-Widget.png)](https://postimg.cc/Xp8yTnwp)
 
 ## Description
 This project is using a Wemos D1 Mini with an DHT22-Sensor to update the current temperature and humidity in the room on a Smashing io Dashboard
