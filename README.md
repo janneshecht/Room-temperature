@@ -1,5 +1,5 @@
 # Room-temperature
-Smashign Widget to display the current room-temperature and humidity
+Smashing Widget to display the current room-temperature and humidity
 
 ## Preview
 
