@@ -17,6 +17,6 @@ This project is using a Wemos D1 Mini with an DHT22-Sensor to update the current
 2. Add the following lines to your Dashboard to include the widget
 ```html
 <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-  <div data-id="roomtemperature" data-view="Roomtemperature" data-title="Room Temperature" ></div>
+  <div data-id="roomtemperature" data-view="Roomtemperature" data-title="Wohnzimmer" ></div>
 </li>
 ```
