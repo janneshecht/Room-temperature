@@ -21,8 +21,8 @@ This project is using a Wemos D1 Mini with an DHT22-Sensor to update the current
 ## Set-up Wemos D1 Mini
 1. Connect the DHT22 to your Wemos D1 Mini (used Pins are defined in the INO-Sketch)
 2. Download the Sketch and change the following values:
- - Wifi-name
- - Wifi-password
- - AUTH_Token (set up in step 4 by setting up Smashing)
- - URL to your Dashboard
+ - (line 15) Wifi-name
+ - (line 16) Wifi-password
+ - (line 75) AUTH_Token (set up in step 4 by setting up Smashing)
+ - (line 19) URL to your Dashboard
 3. Upload the Sketch to your Wemos D1 Mini
