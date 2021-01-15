@@ -3,6 +3,7 @@
 // ----------------------------------------------------------------------------
 $background-color:  #303030;
 
+$title-color: rgba(255, 255, 255, 0.7);
 $full-color:  rgba(255, 255, 255, 1);
 $light-color: rgba(255, 255, 255, 0.7);
 
@@ -14,7 +15,12 @@ $light-color: rgba(255, 255, 255, 0.7);
   background-color: $background-color;
 
   .title {
-    color: $light-color;
+    color: $title-color;
+    font-size: 28px;
+    top: 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
   }
 
   .temperature {
