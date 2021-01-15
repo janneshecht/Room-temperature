@@ -16,7 +16,7 @@ This project is using a Wemos D1 Mini with an DHT22-Sensor to update the current
 </li>
 ```
 3. Set the name of the Widget in the lines you added in step 2 (Value: data-title)
-4. Set a AUTH_Token in the config.ru-file of your Dashboard
+4. Set a AUTH_Token in the config-file of your Dashboard
 
 ## Set-up Wemos D1 Mini
 1. Connect the DHT22 to your Wemos D1 Mini (used Pins are defined in the INO-Sketch)
