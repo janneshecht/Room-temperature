@@ -1,6 +1,9 @@
+#include <MySQL_Cursor.h>
+#include <MySQL_Connection.h>
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 #include "DHT.h"
+
 // DHT22:   PIN 1:  VCC     connect to 3.3V
 //          PIN 2:  Data    connect to D2
 //          PIN 3:  NC      not used
@@ -30,6 +33,13 @@ DHT dht(DHTPin, DHTTYPE);
 float Temperature;
 float Humidity;
 
+IPAddress server_addr(172,16,1,15);  // IP of the MySQL *server* here
+char mysqluser[] = "db-user";              // MySQL user login username
+char mysqlpassword[] = "db-pw";        // MySQL user login password
+
+WiFiClient client;
+MySQL_Connection conn((Client *)&client);
+
 void setup() {
   Serial.begin(115200);
   delay(100);
@@ -54,6 +64,9 @@ void setup() {
   Serial.println("WiFi connected..Yeeha!");
   Serial.print("Got IP: ");  Serial.println(WiFi.localIP());
 }
+
+int counter = 0;
+
 void loop() {
   Temperature = dht.readTemperature(); // Gets the values of the temperature
   Humidity = dht.readHumidity(); // Gets the values of the humidity
@@ -82,5 +95,45 @@ void loop() {
   // Free resources
   http.end();
 
+counter += 1;
+
+if (counter > 1) {
+  delay(1000);
+
+  // Database-connect
+  Serial.print(server_addr);
+  Serial.print(", ");
+  Serial.print(3306);
+  Serial.print(", ");
+  Serial.print(mysqluser);
+  Serial.print(", ");
+  Serial.println(mysqlpassword);
+
+  Serial.println("Connecting MySQL...");
+  if (conn.connect(server_addr, 3306, mysqluser, mysqlpassword)) {
+    delay(5000);
+    Serial.println("Yeah! Mysql-Connection stable!");
+
+    // Float to String
+    String tempf = String(Temperature);
+    String humif = String(Humidity);
+
+    MySQL_Cursor *cur_mem = new MySQL_Cursor(&conn);
+    String INSERT_SQL = "INSERT INTO db.table(`temperature`, `humidity`, `room`) VALUES (" + tempf + "," + humif + ", 'Wohnzimmer')";
+    int str_len = INSERT_SQL.length() + 1;
+    char char_array[str_len];
+    INSERT_SQL.toCharArray(char_array, str_len);
+    // Execute the query
+    cur_mem->execute(char_array);
+    // Deleting the cursor also frees up memory used
+    delete cur_mem;
+  }
+  else
+  {  Serial.println("Connection to MySQL failed.");
+    //  Serial.println(connected());
+  }
+  conn.close();
+  counter = 0;
+}
   delay(15000); // wait 15 seconds
 }
