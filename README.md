@@ -2,7 +2,7 @@
 Smashing Widget to display the current room-temperature and humidity
 
 ## Preview
-[![Room-temperature-Widget.png](https://i.postimg.cc/QdLkKtCk/Room-temperature-Widget.png)](https://postimg.cc/Xp8yTnwp)
+<img src="https://i.postimg.cc/QdLkKtCk/Room-temperature-Widget.png" width="350" height="400">
 <img src="https://i.postimg.cc/RhkxpCy0/IMG-1643.jpg" width="350" height="400">
 
 ## Description
